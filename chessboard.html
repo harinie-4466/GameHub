@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Chess Game</title>
+  <style>
+    .container1{
+    padding-top: 0px;
+    height:70px;
+    width: 100%;
+    background: linear-gradient(to right,rgba(37, 45, 88, 0.934),rgb(2, 18, 82),rgba(74, 4, 54, 0.633),rgba(47, 1, 34, 0.825));
+    margin-top:-10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items:center;
+}
+    body {
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+      padding-left: 0px;
+      font-family: Arial, sans-serif;
+      background-color: aquamarine;
+    }
+     
+    .chessboard {
+      margin-top:800px;
+      margin-left:-950px;
+      margin-right: 0px;;
+      display: grid;
+      grid-template-columns: repeat(8, 60px);
+      grid-template-rows: repeat(8, 60px);
+      border: 4px solid #333;
+    }
+    .square {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 36px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .light {
+      background-color: #f0d9b5;
+    }
+    .dark {
+      background-color: #b58863;
+    }
+    .selected {
+      outline: 3px solid red;
+    }
+     h2{
+         background: linear-gradient(to right, rgb(10, 214, 204),rgba(105, 232, 158, 0.848),rgb(150, 249, 172));
+        -webkit-background-clip: text;
+        background-clip:text;
+        color:transparent;
+        margin-right:800px;
+        margin-left:20px;
+        font-family:sans-serif;
+        font-size: xx-large;
+            }
+    h1{
+        background: linear-gradient(to top, rgb(202, 246, 244),rgba(191, 255, 218, 0.848),rgb(217, 234, 217));
+        -webkit-background-clip: text;
+        background-clip:text;
+        color:transparent;
+        margin-right:600px;
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="container1">
+    <h2>GameHub</h2>
+    <button onclick="alert('1.The game is played on a 3x3 grid.\n2.Two players take turns to place their mark (traditionally X and O) in an empty cell by clicking upon it .\n3.player symbol is X and opponent symbol is O always \n4.The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins the game.\n5.If all cells are filled without any player achieving three in a row, the game ends in a draw.\n6. X wins indicates the player wins the game!\n O wins indicates opponent wins the game !.\n7.if player wishes to play again click on replay button.')" style="background:linear-gradient(to left,rgb(10, 220, 213),rgba(7, 175, 175, 0.888));margin-left:180px; height:30px; width:70px;border-radius: 10px;">help</button>
+    <button style="background:linear-gradient(to left,rgb(10, 220, 213),rgba(7, 175, 175, 0.888));margin-left:50px; height:30px; width:70px;border-radius: 10px;">Music</button>
+    <a href="index.html">
+    <button style="background:linear-gradient(to left,rgb(10, 220, 213),rgba(7, 175, 175, 0.888));margin-left:50px; height:30px; width:70px;border-radius: 10px;">Exit</button></a>
+    <div class="chessboard" id="chessboard">chess</div>
+</div>
+
+<script>
+  const board = document.getElementById("chessboard");
+
+  const initialBoard = [
+    ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
+    ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+    ["", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", ""],
+    ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+    ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"]
+  ];
+
+  let selected = null;
+
+  function renderBoard() {
+    board.innerHTML = "";
+    for (let row = 0; row < 8; row++) {
+      for (let col = 0; col < 8; col++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+        square.classList.add((row + col) % 2 === 0 ? "light" : "dark");
+        square.dataset.row = row;
+        square.dataset.col = col;
+        square.textContent = initialBoard[row][col];
+        if (selected && selected.row == row && selected.col == col) {
+          square.classList.add("selected");
+        }
+        square.addEventListener("click", () => handleSquareClick(row, col));
+        board.appendChild(square);
+      }
+    }
+  }
+
+  function handleSquareClick(row, col) {
+    const piece = initialBoard[row][col];
+    if (selected) {
+      if (selected.row === row && selected.col === col) {
+        selected = null; // Deselect
+      } else {
+        // Move
+        initialBoard[row][col] = initialBoard[selected.row][selected.col];
+        initialBoard[selected.row][selected.col] = "";
+        selected = null;
+      }
+    } else if (piece !== "") {
+      selected = { row, col };
+    }
+    renderBoard();
+  }
+
+  renderBoard();
+</script>
+
+</body>
+</html>

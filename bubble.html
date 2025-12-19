@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Balloon Shooting Game</title>
+        <style>
+            body{
+                background:linear-gradient(to right,rgb(231, 89, 231),rgb(212, 54, 81));
+            }
+            h1{
+                margin-left:600px;
+            }
+            
+             h2{
+                background: linear-gradient(to right, rgb(10, 214, 204),rgba(105, 232, 158, 0.848),rgb(150, 249, 172));
+                -webkit-background-clip: text;
+                background-clip:text;
+                color:transparent;
+                margin-right:800px;
+                margin-left:20px;
+                font-family:sans-serif;
+                font-size: xx-large;
+            }
+            #game-container {
+                margin-left:500px;
+                background-color:rgb(83, 17, 59);
+                width: 600px;
+                height: 400px;
+                position: relative;
+                border : 1px solid black;
+            }
+            .balloon{
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: hwb(172 29% 15%);
+                bottom:0;
+                transition: top 2s linear;
+            }
+            .container1{
+    height:60px;
+    width: 100%;
+    background: linear-gradient(to right,rgba(37, 45, 88, 0.934),rgb(2, 18, 82),rgba(74, 4, 54, 0.633),rgba(47, 1, 34, 0.825));
+    margin-top:0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items:center;
+}
+        </style>
+    </head>
+
+    <body>
+        <div class="container1">
+            <h2>GameHub</h2>
+            <button style="background:linear-gradient(to left,rgb(10, 220, 213),rgba(7, 175, 175, 0.888));margin-left:30px; height:45px; width:90px;border-radius: 10px;">help</button>
+            <button style="background:linear-gradient(to left,rgb(10, 220, 213),rgba(7, 175, 175, 0.888));margin-left:30px; height:45px; width:90px;border-radius: 10px;">Music</button>
+            <a href="After login page.html">
+            <button style="background:linear-gradient(to left,rgb(10, 220, 213),rgba(7, 175, 175, 0.888));margin-left:30px; height:45px; width:90px;border-radius: 10px;">Exit</button></a>
+        </div>
+        <h1>Balloon Shooting Game</h1>
+        <div id="game-container"></div>
+        <p style="margin-left:750px">Score:<span id="score">0</span></p>
+
+<script>
+    //Get the game container and the score element
+    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']; 
+    var gameContainer = document.getElementById("game-container");
+    var scoreElement = document.getElementById("score");
+
+    //Initialize the score to 0
+
+    var score = 0;
+
+    //Function to handle shooting balloon
+
+    function shootBalloon(event){
+        //Get the balloon element
+        var balloon = event.target;
+
+        //Check if the balloon is in the correct position
+        if(balloon.style.top == "0px"){
+            score++;
+             //Increment the score
+            scoreElement.innerHTML = score; 
+            //Update the score element
+            gameContainer.removeChild(balloon); 
+            //Remove the balloon element from the DOM
+        }
+    }
+
+    //Event lister for shooting balloon on mouse click event
+
+    gameContainer.addEventListener("click", shootBalloon);
+
+    //Function to generate random number between min and max
+    function getRandomNumber(min, max){
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    //Function to create and animate the balloon
+function createBalloon(){
+    //Create a div element for the balloon
+    var balloon = document.createElement("div");
+    //Add the balloon class to the div element
+    balloon.classList.add("balloon");
+
+    //Set a random position for the balloon horizontally
+    var balloonX = getRandomNumber(0, gameContainer.clientWidth - 50);
+    balloon.style.left = balloonX + "px";
+
+    //set the initial position of the balloon vertically at the bottom of the game container
+
+    balloon.style.top = gameContainer.clientHeight - 50 + "px";
+
+    //animate the balloon by changing the top position to 0
+
+    setTimeout(function(){
+        balloon.style.top = "0px";
+    }, 100);
+
+    //Add the balloon element to the game container
+
+    gameContainer.appendChild(balloon);
+
+    //Set a random time interval to create the next balloon
+    setTimeout(createBalloon, getRandomNumber(1000, 3000));
+}
+    //Start the game by creating the balloon
+    createBalloon();
+</script>
+
+
+
+
+    </body>
+</html>
+

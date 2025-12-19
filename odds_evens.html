@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <link rel="stylesheet" href="odds.css">
+        <script src="evens.js"></script>
+
+        <div class="container">
+            <h3 style="margin-left: 20px;color: rgb(110, 62, 54);">GameHub</h3>
+           
+            <button style="margin-left:900px ;"  onclick="alert('1. Guess Odd or Even: Start by making your initial guess whether the sum of your chosen number and the computer\'s randomly generated number will be odd or even. You can do this by clicking on the \'Odd\' or \'Even\' button on the webpage.\n2. Choose a Number: After making your guess, click on any of the numbers from 1 to 5 displayed on the webpage. This number will be added to the computer\'s randomly generated number to calculate the sum.\n3. Shoot: Once you\'ve selected your number, click the \'Shoot\' button to proceed. This will trigger the computer to generate a random number from 1 to 5.\n4. Winning and Losing: If the sum of the numbers is odd and you guessed \'Odd\' or if the sum is even and you guessed \'Even,\' you win! Otherwise, you lose.')">
+                HELP
+            </button>
+            <button id="toggleButton" style="margin-left:15px ;"  onclick="toggleAudio()" >Music</button>
+            <a href="index.html"><button style="margin-left: 30px;">EXIT</button></a>
+        </div>
+        <h1>ODD OR EVEN</h1>
+        
+
+
+
+        <div class="wrapper">
+            <div class="container1">
+                <h3 style="margin-left: 155px;">YOUR TURN</h3>
+
+                <button  id="odd" onclick="guess('odd')"  style="background-color: rgb(139, 105, 92); height: 45px;width: 70px; border-radius: 10px; margin-top: 10px;margin-left: 90px;"> ODD </button>
+                <button id="even"  onclick="guess('even')"    style="background-color: rgb(132, 92, 76); height: 45px;width: 70px; border-radius: 10px; margin-left:90px; margin-bottom: 10px;"> EVEN </button>
+                <hr>
+                <button id="a" onclick="disp_choice('a')" style="margin-left: 40px;"></button>
+                <button id="b" onclick="disp_choice('b')"></button>
+                <button id="c" onclick="disp_choice('c')"></button>
+                <button id="d" onclick="disp_choice('d')" style="margin-left: 40px;"></button></button>
+                <button id="e" onclick="disp_choice('e')"></button>
+                <button id="f" onclick="disp_choice('f')"></button>
+
+                <button style="background-color: rgb(146, 231, 146);height:70px;width:100px;margin-left: 127px;margin-top: 55px;" onclick="cmp()">SHOOT</button>
+
+                
+                
+               
+    
+            </div>
+          
+    
+            <div class="container2">
+                <h3>COMPUTER</h3>
+                <img id="computerImage" src="" alt="Computer Image" height="200px" width="200px">
+                <button  onclick="restart()"  style="height: 70px; width: 100px; background-color: rgb(212, 176, 247); border-radius: 10px;margin-top: 120px;">REPLAY</button>
+                
+    
+            </div>
+
+        </div>
+      <p>Created by: Devika</p>
+    </body>
+</html>

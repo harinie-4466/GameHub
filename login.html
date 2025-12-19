@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+
+<body style="background:linear-gradient(to right,rgb(27, 31, 60),rgb(29, 44, 104),rgba(70, 69, 133, 0.947));">
+    <div class="wrapper">
+        <div class="container1">
+            <!-- Your logo and other contents -->
+        </div>
+
+        <div class="container2">
+            <form id="loginForm">
+                <h1 style="color: white;text-align: center;margin-top: 110px;">Sign in to Site</h1>
+                <input type="text" id="username" placeholder="username" style="margin-top:30px;">
+                <input type="password" id="password" placeholder="password" style="margin-top:20px;">
+                <button type="button" style="margin-top:30px;margin-left: 8px; height:40px;width: 300px;" class="btn" onclick="login()">Login</button><br>
+                <button type="button" style="margin-top:5px;margin-left: 8px; height:40px;width: 300px;" class="btn" onclick="createAccount()">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password, createAccount: false })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    ipcRenderer.send('navigate-to-after-login');
+                } else {
+                    alert('Unauthorized');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function createAccount() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password, createAccount: true })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                if (data === 'Account created successfully') {
+                    ipcRenderer.send('navigate-to-after-login');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

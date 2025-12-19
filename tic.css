@@ -1,0 +1,48 @@
+
+
+
+.container {
+    text-align: center;
+    margin-left:550px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+}
+
+.cell {
+    
+    background:linear-gradient(to top,rgb(234, 174, 106),rgb(249, 151, 5));
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:50px;
+    cursor: pointer;
+}
+
+.replay-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left:-670px;
+    border-radius:10px;
+    background:linear-gradient(to top,rgb(72, 43, 237),rgba(244, 185, 197, 0.888),rgb(249, 238, 238));
+}
+
+.winner-message {
+    color:aliceblue;
+    margin-top: 20px;
+    font-size:50px;
+    margin-right:510px;
+}
+.cell:hover{
+    background:linear-gradient(to right,rgb(224, 165, 165),rgb(240, 223, 234));
+}
+

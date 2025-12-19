@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Simon Says
+        </title>
+        <link rel="stylesheet" href="simon.css">
+    </head>
+        <body style="background:linear-gradient(to right,rgb(205, 216, 165),rgb(209, 177, 105),rgba(152, 215, 106, 0.947));">
+            <script src="simon.js"></script>
+
+            <div id="content">
+
+            
+
+            <div class="container">
+            <h3 style="margin-left: 20px;color: wheat;">GameHub</h3>
+            <button style="margin-left:900px ;height: 20px;width:60px"  onclick="alert('1. Gameplay: The game begins with the top row buttons blinking in a random sequence. Pay close attention to the order in which they light up\n2. User Response: After the sequence completes, an alert will prompt you to begin. Click the buttons on the bottom row in the same order as the top row sequence.\n3. Winning: If you successfully replicate the sequence, you win the round')">
+                HELP
+            </button>
+            <button id="toggleButton" style="margin-left:15px;height: 20px;width:60px;"  onclick="toggleAudio()" >Music</button>
+            <a href="index.html">
+            <button style="margin-left: 25px;height: 20px;width:60px">EXIT</button>
+        </div>
+        <h1>SIMON SAYS</h1>
+
+            <button style="background-color: #F5D4C3;" id="a"></button>
+            <button style="background-color: #E09689;" id="b"></button>
+            <button style="background-color: #E8F1EE;" id="c"></button>
+            <button style="background-color: #C8DBD7;" id="d"></button>
+
+            <br>
+            <br>
+
+            <button style="background-color: #F5D4C3;" onclick=user(1)></button>
+            <button style="background-color: #E09689;" onclick=user(2)></button>
+            <button style="background-color: #E8F1EE;" onclick=user(3)></button>
+            <button style="background-color: #C8DBD7;" onclick=user(4)></button>
+
+            <br>
+            <br>
+
+            <button style="width: 70px; height:30px" onclick="blink()">START</button>    
+           
+            </div>
+        </body>
+    </head>
+</html>

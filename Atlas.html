@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image:url("world.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    #container {
+        text-align: center;
+        background-color:white; /* Add background color with opacity */
+        padding: 20px;
+        border-radius: 10px;
+    }
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header h1 {
+        margin: 0;
+        background: linear-gradient(to right, rgb(10, 214, 204),rgba(105, 232, 158, 0.848),rgb(150, 249, 172));
+        -webkit-background-clip: text;
+        background-clip:text;
+        color:transparent;
+        margin-right:800px;
+        margin-left:20px;
+        font-family:sans-serif;
+        font-size: xx-large;
+    }
+    header button {
+        margin-left:30px;
+        padding: 5px 10px;
+        border: none;
+        background-color: #517892;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    header button:hover {
+        background-color: #315b7c;
+    }
+
+
+
+     /* Hide the audio element */
+     audio {
+        display: none;
+    }
+    a{
+        margin:3px
+        
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>GameHub</h1>
+    <div class="a">
+        <!-- Toggle button for controlling audio playback -->
+        <button id="toggleButton" onclick="toggleAudio()" >Music</button>
+        <button onclick="alert('1. Guess the capital of the country given and enter it in the text box\n2. Click on show answer if you are not able to find he answer')">Help</button>
+        <a href="index.html">
+        <button>Exit</button></a>
+    </div>
+</header>
+
+<div id="container">
+    <h1>Atlas Game</h1>
+    <p>Guess the capital city of the country:</p>
+    <p id="country"></p>
+    <input type="text" id="guessInput" placeholder="Enter your guess" onfocus="startAudioPlayback()">
+
+    <button onclick="checkGuess()">Check</button>
+    <button onclick="showAnswer()">Show Answer</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    const countries = [
+        { name: "Afghanistan", capital: "Kabul" },
+        { name: "Albania", capital: "Tirana" },
+        { name: "Algeria", capital: "Algiers" },
+        // Add more countries and capitals here
+    ];
+
+    function getRandomCountry() {
+        return countries[Math.floor(Math.random() * countries.length)];
+    }
+
+    function startNewGame() {
+        const country = getRandomCountry();
+        document.getElementById('country').textContent = country.name;
+        document.getElementById('guessInput').value = '';
+        document.getElementById('result').textContent = '';
+        return country.capital.toLowerCase();
+    }
+
+    let correctCapital = startNewGame();
+
+    function checkGuess() {
+        const guessInput = document.getElementById('guessInput').value.toLowerCase();
+        if (guessInput === correctCapital) {
+            document.getElementById('result').textContent = 'Correct!';
+            setTimeout(() => {
+                correctCapital = startNewGame();
+            }, 1000);
+        } else {
+            document.getElementById('result').textContent = 'Incorrect. Try again!';
+        }
+    }
+
+    function showAnswer() {
+        alert(`The correct answer is ${correctCapital}.`);
+    }
+</script>
+<!-- Audio element for background music -->
+<audio id="myAudio" controls loop>
+    <source src="a1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<script>
+    function toggleAudio() {
+        var audio = document.getElementById("myAudio");
+        var button = document.getElementById("toggleButton");
+        if (audio.paused) {
+            audio.play();
+            button.textContent = "Music";
+        } else {
+            audio.pause();
+            button.textContent = "Pause";
+        }
+    }
+    function startAudioPlayback() {
+        var audio = document.getElementById("myAudio");
+        audio.play();
+    }
+</script>
+
+</body>
+</html>

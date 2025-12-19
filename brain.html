@@ -1,0 +1,82 @@
+<html>
+    <style>
+        body{
+            background:linear-gradient(to right,rgb(23, 3, 61),rgb(10, 2, 53),rgb(29, 3, 29));
+        }
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            
+            padding: 30px 30px;
+            
+        }
+
+        .game-grid a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            margin-right: 20px;
+            margin-left: 35px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-grid img {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .game-grid img:hover {
+            transform: scale(1.1);
+        }
+
+        .game-grid .game-title {
+            position: absolute;
+            bottom: 0;
+            background-color: black;
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            font-style: oblique;
+            padding: 5px 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .game-grid a:hover .game-title {
+            opacity: 1;
+        }
+    </style>
+    <body>
+        <div class="section-spacer"></div>
+        <a href="After login page.html">
+            <button  style="height: 40px;width:70px;background-color: blueviolet;">Exit</button>
+        <div class="game-grid">
+        
+            <a href="simon.html">
+                <img src="Simon says.jpeg" alt="Game 2">
+                <div class="game-title">Simon Says</div>
+            </a>
+            <a href="Hangman.html">
+                <img src="h2.jpeg" alt="Game 4">
+                <div class="game-title">Guess the Word</div>
+            </a>
+            <a href="tic.html">
+                <img src="k2.jpeg" alt="Game 5">
+                <div class="game-title">Tic Tac Toe</div>
+            </a>
+            <a href="">
+                <img src="bingo.jpeg" alt="Game 6">
+                <div class="game-title">Bingo</div>
+            </a>
+            <a href="Atlas.html">
+                <img src="h1.jpeg" alt="Game 3">
+                <div class="game-title">Atlas</div>
+            </a>
+        </div>
+    </body>
+</html>

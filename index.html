@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+             background:linear-gradient(to right,rgb(23, 3, 61),rgb(10, 2, 53),rgb(29, 3, 29));
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10px;
+            font-size: large;
+            height:60px;
+            width: 100%;
+            background: linear-gradient(to right,rgba(37, 45, 88, 0.934),rgb(2, 18, 82),rgba(74, 4, 54, 0.633),rgba(103, 4, 75, 0.408));
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left:0px;
+        }
+
+        .logo p {
+            background: linear-gradient(to right, rgb(10, 214, 204),rgba(105, 232, 158, 0.848),rgb(150, 249, 172));
+            -webkit-background-clip: text;
+            background-clip:text;
+            color:transparent;
+            margin-right:800px;
+            font-family:sans-serif;
+            font-size: xx-large;
+            margin-left:200px;
+    
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+        }
+
+        .navigation input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .navigation button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(99, 68, 68, 0.35);
+            background:linear-gradient(to right,rgb(23, 3, 61),rgb(10, 2, 53),rgb(29, 3, 29));
+            overflow: hidden;
+        }
+
+        nav ul li {
+            float: left;
+            background:linear-gradient(to right,rgb(23, 3, 61),rgb(10, 2, 53),rgb(29, 3, 29));
+        }
+
+        nav ul li button {
+            display: block;
+            color: white;
+            background: none;
+            border: none;
+            padding: 14px 35px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        nav ul li button:hover {
+            background-color: #111;
+            background:linear-gradient(to right,rgb(80, 70, 80),rgb(32, 32, 72));
+        }
+
+        .site-description {
+            background-image: url('bgd.jpeg');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            color: #fff;
+            margin-top: 0;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-style: italic;
+            font-size: larger;
+            margin-bottom: 10px;
+        }
+
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            background:linear-gradient(to right,rgb(23, 3, 61),rgb(10, 2, 53),rgb(29, 3, 29));
+            padding: 100px;
+            padding-top: 0px;
+            
+        }
+
+        .game-grid a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            margin-right: 20px;
+            margin-left: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-grid img {
+            width: 210px;
+            height: 210px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .game-grid img:hover {
+            transform: scale(1.1);
+        }
+
+        .game-grid .game-title {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            font-style: oblique;
+            padding: 5px 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .game-grid a:hover .game-title {
+            opacity: 1;
+        }
+
+        .black-background {
+            background:linear-gradient(to right,rgb(23, 3, 61),rgb(10, 2, 53),rgb(29, 3, 29));
+            color:#f2f2f2;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .contact-info p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .section-spacer {
+            background-color: #000;
+            height: 20px;
+            background:linear-gradient(to right,rgb(23, 3, 61),rgb(10, 2, 53),rgb(29, 3, 29));
+        }
+        
+        * {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width:80%;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color:#000;
+  font-size:30px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom:10px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: darkslateblue;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo1.png" alt="Logo" width="50" height="50">
+            <p style="margin-left:10px;">  GameHub</p>
+        </div>
+        <div class="navigation">
+            
+            <form id="searchForm">
+                <input type="text" id="searchInput" placeholder="Search games...">
+            </form>
+            <a href="login.html"><button><img src="account.png" width="30" height="30" alt="Account Symbol"></button></a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><button>Adventure</button></li>
+            <li><a href="brain.html"><button>Brain</button></li></a>
+            <li><a href="casino.html"><button>Casino</button></li></a>
+            <li><button>Car</button></li>
+            <li><a href="skills.html"><button>Skills</button></li></a>
+            <li><button>Action</button></li>
+            <li><a href="puzzle.html"><button>Puzzle</button></li></a>
+            <li><button>Racing</button></li>
+            <li><a href="sports.html"><button>Sports</button></li></a>
+            <li><button>Stimulation</button></li>
+            <li><a href="others.html"><button>Others</button></li></a>
+        </ul>
+    </nav>
+    <div class="section-spacer"></div>
+    <section class="site-description">
+        <div>
+            <h1 style="font-family: 'Times New Roman', Times, serif; font-size:xx-large;">Welcome to Gamehub!</h1>
+            <br>
+            <p style="font-family: 'Times New Roman', Times, serif;">Explore a wide range of exciting games and enjoy the ultimate gaming experience with us!</p>
+            <p style="font-family: 'Times New Roman', Times, serif;">Join us and elevate your gaming experience to unprecedented heights.</p>
+            <p style="font-family: 'Times New Roman', Times, serif;">Let your journey begin, and let our games ignite your passion!</p>
+        </div>
+    </section>
+
+    <div class="section-spacer"></div>
+    <section>
+    <h1 style="font-family:'Times New Roman', Times, serif; color: #bbb; text-align: center; font-size: xx-large; background: linear-gradient(to right, rgb(10, 214, 204),rgba(105, 232, 158, 0.848),rgb(150, 249, 172));
+    -webkit-background-clip: text;
+    background-clip:text;
+    color:transparent;"><i><b>Trending Games</b></i></h1>
+</section>
+   
+
+
+
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 4</div>
+          <img src="world.jpg" style="width:100%;height:500px">
+          <div class="text">ATLAS</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 4</div>
+          <img src="rps.png" style="width:100%;height:500px">
+          <div class="text">ROCK PAPER SCISSORS</div>
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">3 / 4</div>
+            <img src="odd.jpeg" style="width:100%;height:500px">
+            <div class="text">ODDS AND EVENS</div>
+        </div>
+         <div class="mySlides fade">
+          <div class="numbertext">4 / 4</div>
+          <img src="pieces.jpg" style="width:100%;height:600px">
+          <div class="text">CHESS</div>
+        </div>
+
+        
+        
+        </div>
+        <br>
+        
+        <div style="text-align:center">
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span>
+        </div>
+       
+    
+
+
+
+
+
+
+
+
+    <div class="section-spacer"></div>
+    <section class="all-games">
+        <h1 style="font-family:'Times New Roman', Times, serif; color: #bbb; text-align: center; font-size: xx-large; background: linear-gradient(to right, rgb(28, 2, 37),rgb(235, 229, 212),rgb(238, 157, 231));
+    -webkit-background-clip: text;
+    background-clip:text;
+    color:transparent;">🎮 All Games</h1>
+        <div class="game-grid">
+            <a href="odds_evens.html">
+                <img src="d1.jpeg" alt="Game 1">
+                <div class="game-title">Odds and Evens<br>Credits: Devika</div>
+            </a>
+            <a href="simon.html">
+                <img src="Simon says.jpeg" alt="Game 2">
+                <div class="game-title">Simon Says<br>Credits: Devika</div>
+            </a>
+            <a href="Atlas.html">
+                <img src="h1.jpeg" alt="Game 3">
+                <div class="game-title">Atlas<br>Credits: Harinie</div>
+            </a>
+            <a href="Hangman.html">
+                <img src="h2.jpeg" alt="Game 4">
+                <div class="game-title">Guess the Word<br>Credits: Harinie</div>
+            </a>
+            <a href="tic.html">
+                <img src="K2.jpeg" alt="Game 5">
+                <div class="game-title">Tic Tac Toe<br>Credits: Kanishthika</div>
+            </a>
+            <a href="rps.html">
+                <img src="K1.jpeg" alt="Game 6">
+                <div class="game-title">Rock Paper Scissors<br>Credits: Kanishthika</div>
+            </a>
+            <a href="chessboard.html">
+                <img src="chess.jpg" alt="Game 6">
+                <div class="game-title">Chess<br>Coming Soon</div>
+            </a>
+            <a href="">
+                <img src="carrom.jpeg" alt="Game 6">
+                <div class="game-title">Carrom<br>Coming Soon</div>
+            </a>
+            <a href="">
+                <img src="spin wheel.jpg" alt="Game 6">
+                <div class="game-title">Spin Wheel<br>Coming Soon</div>
+            </a>
+            <a href="">
+                <img src="uno.jpeg" alt="Game 6">
+                <div class="game-title">UNO<br>Coming Soon</div>
+            </a>
+            <a href="bubble.html">
+                <img src="bubble.jpeg" alt="Game 6">
+                <div class="game-title">Bubble Shooter<br>Credits: Guru Prakash</div>
+            </a>
+            <a href="">
+                <img src="sudoko.png" alt="Game 6">
+                <div class="game-title">Sudoko<br>Coming Soon</div>
+            </a>
+            <a href="">
+                <img src="bingo.jpeg" alt="Game 6">
+                <div class="game-title">Bingo<br>Coming Soon</div>
+            </a>
+            <a href="">
+                <img src="ping.jpeg" alt="Game 6">
+                <div class="game-title">Ping Pong<br>Coming Soon</div>
+            </a>
+            <a href="">
+                <img src="Tetris.jpeg" alt="Game 6">
+                <div class="game-title">Tetris<br>Coming Soon</div>
+            </a>
+            
+
+        </div>
+    </section>
+    <div class="section-spacer"></div>
+    <footer class="black-background">
+        <div class="contact-info">
+            <p>Contact us: dhk@email.com | Phone: +914563782945</p>
+        </div>
+    </footer>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {slideIndex = 1}    
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+          setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    </script>
+
+    <script src="abc.js"></script>
+
+</body>
+</html>

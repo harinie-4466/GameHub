@@ -1,0 +1,75 @@
+<html>
+    <style>
+        body{
+            background:linear-gradient(to right,rgb(23, 3, 61),rgb(10, 2, 53),rgb(29, 3, 29));
+        }
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            
+            padding: 30px 30px;
+            
+        }
+
+        .game-grid a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            margin-right: 20px;
+            margin-left: 35px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-grid img {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .game-grid img:hover {
+            transform: scale(1.1);
+        }
+
+        .game-grid .game-title {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            font-style: oblique;
+            padding: 5px 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .game-grid a:hover .game-title {
+            opacity: 1;
+        }
+    </style>
+    <body>
+        <div class="section-spacer"></div>
+        <div class="game-grid">
+            <a href="odds_evens.html">
+                <img src="d1.jpeg" alt="Game 1">
+                <div class="game-title">Odds and Evens</div>
+            </a>
+            <a href="rps.html">
+                <img src="k1.jpeg" alt="Game 6">
+                <div class="game-title">Rock Paper Scissors</div>
+            </a>
+            <a href="">
+                <img src="chess.jpg" alt="Game 6">
+                <div class="game-title">Chess</div>
+            </a>
+            <a href="">
+                <img src="carrom.jpeg" alt="Game 6">
+                <div class="game-title">Carrom</div>
+            </a>
+        </div>
+    </body>
+</html>

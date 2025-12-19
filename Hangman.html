@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guess The Word</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        font-style: oblique;
+        display: flex;
+        background-color:#f7de26 ;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    #container {
+        text-align: center;
+        font-style: oblique;
+        background-color: #f78b26;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header h3 {
+        margin: 0;
+        background: linear-gradient(to right, rgb(10, 214, 204),rgba(105, 232, 158, 0.848),rgb(150, 249, 172));
+        -webkit-background-clip: text;
+        background-clip:text;
+        color:transparent;
+        margin-right:800px;
+        margin-left:20px;
+        font-family:sans-serif;
+        font-size: xx-large;
+    }
+    header button {
+        padding: 5px 10px;
+        margin: 4px;
+        border: none;
+        background-color: #517892;
+        color:beige;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    header button:hover {
+        background-color: #315b7c;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h3>GameHub</h3>
+    <div>
+        <button onclick="alert('1. Enter a letter or word inside the text box.\n2. If your letter is right,it will be replaced instead of the dash where that letter exists,if your word is right then you have found the word.\n3. If the letter or word you guessed is wrong,then you will lose a chance.\n4. You will have a total of 5 words to guess.')">Help</button>
+        <button id="toggleButton" onclick="toggleAudio()" >Music</button>
+        <a href="index.html">
+        <button >Exit</button></a>
+    </div>
+</header>
+
+<div id="container">
+    <h1><u><i>Guess The Word</i></u></h1>
+    <p id="wordDisplay"></p>
+    <p>Guessed Letters: <span id="guessedLetters"></span></p>
+    <p>Chances Left: <span id="chancesLeft"></span></p>
+    <input type="text" id="guessInput" placeholder="Enter a letter or word">
+    <button onclick="guess()">Guess</button>
+</div>
+
+<script>
+    const words = ["apple", "banana", "orange", "grape", "pineapple"];
+    let word = '';
+    let guessedWord = '';
+    let guessedLetters = [];
+    let chancesLeft = 5;
+    let score = 0;
+
+    function startNewRound() {
+        word = words[Math.floor(Math.random() * words.length)];
+        guessedWord = '_'.repeat(word.length).split('').join(' '); // Add spaces between underscores
+        guessedLetters = [];
+        chancesLeft = 5;
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        document.getElementById('wordDisplay').textContent = guessedWord;
+        document.getElementById('guessedLetters').textContent = guessedLetters.join(', ');
+        document.getElementById('chancesLeft').textContent = chancesLeft;
+    }
+
+    function guess() {
+        const guessInput = document.getElementById('guessInput');
+        const guess = guessInput.value.toLowerCase();
+
+        if (!guess.match(/[a-z]/)) {
+            alert("Please enter a valid letter or word.");
+            return;
+        }
+
+        if (guessedLetters.includes(guess)) {
+            alert("You've already guessed that letter.");
+            return;
+        }
+
+        guessedLetters.push(guess);
+
+        if (guess.length === 1) {
+            // Letter guessed
+            if (word.includes(guess)) {
+                for (let i = 0; i < word.length; i++) {
+                    if (word[i] === guess) {
+                        guessedWord = guessedWord.substr(0, i*2) + guess + guessedWord.substr(i*2 + 1); // Replace underscore with the guessed letter
+                    }
+                }
+                if (!guessedWord.includes('_')) {
+                    alert("Congratulations! You've guessed the word.");
+                    score++;
+                    if (score === 5) {
+                        alert(`Your final score: ${score}`);
+                        return;
+                    }
+                    startNewRound();
+                }
+            } else {
+                chancesLeft--;
+                if (chancesLeft === 0) {
+                    alert("Game over! The word was: " + word);
+                    score++;
+                    if (score === 5) {
+                        alert(`Your final score: ${score}`);
+                        return;
+                    }
+                    startNewRound();
+                }
+            }
+        } else {
+            // Word guessed
+            if (guess === word) {
+                alert("Congratulations! You've guessed the word.");
+                score++;
+                if (score === 5) {
+                    alert(`Your final score: ${score}`);
+                    return;
+                }
+                startNewRound();
+            } else {
+                chancesLeft--;
+                if (chancesLeft === 0) {
+                    alert("Game over! The word was: " + word);
+                    score++;
+                    if (score === 5) {
+                        alert(`Your final score: ${score}`);
+                        return;
+                    }
+                    startNewRound();
+                }
+            }
+        }
+
+        updateDisplay();
+        guessInput.value = '';
+    }
+
+    startNewRound();
+</script>
+
+</body>
+</html>
